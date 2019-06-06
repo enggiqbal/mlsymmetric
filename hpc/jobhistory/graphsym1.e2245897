@@ -1,0 +1,26 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+2019-06-05 15:49:57.677633: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-05 15:49:57.833311: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299995000 Hz
+2019-06-05 15:49:57.835024: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x42641f0 executing computations on platform Host. Devices:
+2019-06-05 15:49:57.835059: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Traceback (most recent call last):
+  File "multi_application.py", line 110, in <module>
+    model.fit_generator(train_generator, verbose=1, steps_per_epoch = nb_train_samples // batch_size, epochs = epochs, validation_data = validation_generator, validation_steps = nb_validation_samples // batch_size, callbacks=[csv_logger,checkpoint])
+  File "/usr/local/lib/python3.5/dist-packages/keras/legacy/interfaces.py", line 91, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/keras/engine/training.py", line 1418, in fit_generator
+    initial_epoch=initial_epoch)
+  File "/usr/local/lib/python3.5/dist-packages/keras/engine/training_generator.py", line 102, in fit_generator
+    callbacks.on_train_begin()
+  File "/usr/local/lib/python3.5/dist-packages/keras/callbacks.py", line 132, in on_train_begin
+    callback.on_train_begin(logs)
+  File "/usr/local/lib/python3.5/dist-packages/keras/callbacks.py", line 1183, in on_train_begin
+    **self._open_args)
+FileNotFoundError: [Errno 2] No such file or directory: 'binaryhv/output/0_ResNet50log.csv'

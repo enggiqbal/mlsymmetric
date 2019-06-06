@@ -1,0 +1,9 @@
+
+You may want to consider changing your batch submission script as follows to speed up your job run next time:
+
+#PBS -l select=2:ncpus=28:mem=5gb
+#PBS -l place=free:shared
+#PBS -l walltime=19:40:00
+
+Your group kobourov has been charged 19:35:38 for 50 cpus.
+You previously had 22589:57:44.  You now have 21610:16:04 remaining for the queue oc_standard

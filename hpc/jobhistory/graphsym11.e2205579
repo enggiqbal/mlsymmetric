@@ -1,0 +1,16 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+2019-05-30 16:15:18.511240: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-30 16:15:18.775147: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299930000 Hz
+2019-05-30 16:15:18.776714: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x42602e0 executing computations on platform Host. Devices:
+2019-05-30 16:15:18.776742: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Traceback (most recent call last):
+  File "multi_application.py", line 124, in <module>
+    with open( timerfile, 'w') as modified: modified.write(modelname + ", " + timer()- start)
+TypeError: Can't convert 'float' object to str implicitly

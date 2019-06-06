@@ -1,0 +1,13 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+2019-05-30 16:23:15.480222: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-30 16:23:19.464606: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300220000 Hz
+2019-05-30 16:23:19.466164: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x425d6a0 executing computations on platform Host. Devices:
+2019-05-30 16:23:19.466183: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+=>> PBS: job killed: cput 864324 exceeded limit 864000

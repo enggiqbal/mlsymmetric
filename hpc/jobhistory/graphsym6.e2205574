@@ -1,0 +1,21 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-05-30 17:08:35.026355: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-30 17:08:36.996906: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299790000 Hz
+2019-05-30 17:08:36.998298: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4be0dc0 executing computations on platform Host. Devices:
+2019-05-30 17:08:36.998323: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-05-30 17:08:37.378129: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-05-30 17:08:37.526685: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-05-30 17:08:37.675005: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-05-30 17:08:37.909105: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-05-30 17:08:38.727412: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+Traceback (most recent call last):
+  File "multi_application.py", line 124, in <module>
+    with open( timerfile, 'w') as modified: modified.write(modelname + ", " + timer()- start)
+TypeError: Can't convert 'float' object to str implicitly

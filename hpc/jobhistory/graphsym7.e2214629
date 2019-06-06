@@ -1,0 +1,13 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-03 11:15:50.909337: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-03 11:15:52.049142: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300005000 Hz
+2019-06-03 11:15:52.051666: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4d1d640 executing computations on platform Host. Devices:
+2019-06-03 11:15:52.051712: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+/pbs/ocelote/i14n10/mom_priv/jobs/2214629.head1.cm.cluster.SC: line 26: 17076 Killed                  singularity exec --nv /extra/hossain/gdocker.simg python3 multi_application.py 7 4 > multi/st_out/output_7.txt

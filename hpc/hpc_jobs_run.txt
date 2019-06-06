@@ -1,0 +1,11 @@
+ qsub pbs/graphsymbinaryvnonsym1.pbs 
+ qsub pbs/graphsymbinaryvnonsym2.pbs 
+ qsub pbs/graphsymbinaryvnonsym3.pbs 
+ qsub pbs/graphsymbinaryvnonsym4.pbs 
+ qsub pbs/graphsymbinaryvnonsym5.pbs 
+ qsub pbs/graphsymbinaryvnonsym6.pbs 
+ qsub pbs/graphsymbinaryvnonsym7.pbs 
+ qsub pbs/graphsymbinaryvnonsym8.pbs 
+ qsub pbs/graphsymbinaryvnonsym9.pbs 
+ qsub pbs/graphsymbinaryvnonsym10.pbs 
+ qsub pbs/graphsymbinaryvnonsym11.pbs 

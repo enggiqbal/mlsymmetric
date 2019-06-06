@@ -1,0 +1,40 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+2019-06-05 15:58:50.428772: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-05 15:58:50.704998: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300225000 Hz
+2019-06-05 15:58:50.706645: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4260630 executing computations on platform Host. Devices:
+2019-06-05 15:58:50.706665: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Traceback (most recent call last):
+  File "multi_application.py", line 116, in <module>
+    model.fit_generator(train_generator, verbose=1, steps_per_epoch = nb_train_samples // batch_size, epochs = epochs, validation_data = validation_generator, validation_steps = nb_validation_samples // batch_size, callbacks=[csv_logger,checkpoint])
+  File "/usr/local/lib/python3.5/dist-packages/keras/legacy/interfaces.py", line 91, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/keras/engine/training.py", line 1418, in fit_generator
+    initial_epoch=initial_epoch)
+  File "/usr/local/lib/python3.5/dist-packages/keras/engine/training_generator.py", line 181, in fit_generator
+    generator_output = next(output_generator)
+  File "/usr/local/lib/python3.5/dist-packages/keras/utils/data_utils.py", line 709, in get
+    six.reraise(*sys.exc_info())
+  File "/usr/lib/python3/dist-packages/six.py", line 686, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/keras/utils/data_utils.py", line 685, in get
+    inputs = self.queue.get(block=True).get()
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 608, in get
+    raise self._value
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/lib/python3.5/dist-packages/keras/utils/data_utils.py", line 626, in next_sample
+    return six.next(_SHARED_SEQUENCES[uid])
+  File "/usr/local/lib/python3.5/dist-packages/keras_preprocessing/image/iterator.py", line 100, in __next__
+    return self.next(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/keras_preprocessing/image/iterator.py", line 109, in next
+    index_array = next(self.index_generator)
+  File "/usr/local/lib/python3.5/dist-packages/keras_preprocessing/image/iterator.py", line 85, in _flow_index
+    current_index = (self.batch_index * self.batch_size) % self.n
+ZeroDivisionError: integer division or modulo by zero
