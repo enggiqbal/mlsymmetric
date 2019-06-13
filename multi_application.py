@@ -22,28 +22,37 @@ classes=int(sys.argv[2])
 
 rootoutput='outputs/'
 rootdataset='dataset/'
-if classes==4:
-    expprefix="multi"
-    classes_name=["H","R","T","V"]
-    datapath='hvttraindata'
+if classes==3:
+#    expprefix="multi"
+#    classes_name=["H","R","T","V"]
+#    datapath='hvttraindata'
+
+    expprefix="multirefrottarAll"
+    classes_name=["ref","rot","tar"]
+    datapath='multi_ref_rot_tra'
+
 else:
-#    expprefix="binary"
-#    datapath="esample"
-#    classes_name=["nonsym","sym"]
+    expprefix="binary"
+    datapath="esample"
+    classes_name=["nonsym","sym"]
 
 #    expprefix="binarydense"
 #    datapath="binary_data"
 #    classes_name=["nonsym","sym"]
 
-    expprefix="binaryhv"
-    datapath="hvdata"
-    classes_name=["H","V"]
+#    expprefix="binaryhv"
+#    datapath="hvdata"
+#    classes_name=["H","V"]
 
 
 #    expprefix="binaryvnonsym"
 #    datapath="binaryvnonsymdata"
 #    classes_name=["nonsym","V"]
 
+
+#    expprefix="binaryhnonsym"
+#    datapath="binaryhnonsymdata"
+#    classes_name=["nonsym","H"]
 
     
 

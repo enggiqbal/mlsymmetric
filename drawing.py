@@ -10,7 +10,7 @@ from keras import backend as K
 from keras.callbacks import CSVLogger
 import json
 import keras.applications as  keras_applications
-
+import os
 theader='''
      \\begin{table}[h!]
      \\begin{center}
@@ -31,6 +31,44 @@ names=['ResNet50',   'MobileNet', 'MobileNetV2', 'NASNetMobile', 'NASNetLarge', 
 
 m=[keras_applications.ResNet50, keras_applications.MobileNet,  keras_applications.MobileNetV2, keras_applications.NASNetMobile, keras_applications.NASNetLarge, keras_applications.VGG16, keras_applications.VGG19, keras_applications.Xception, keras_applications.InceptionResNetV2,
 keras_applications.DenseNet121,keras_applications.DenseNet201]
+
+
+
+def summarypage():
+	data=""
+	directory=["binary","binarydense",
+	"binaryhnonsym", "binaryhv","binaryvnonsym","multi", "multirefrottarAll" ]
+	history=[]
+	global names
+	i =0
+	data=""
+	hf="\multicolumn{2}{|c|}{}"
+	for m in names:
+		data=data + m 
+		header=""
+		for e in directory:
+			header=header + " \\multicolumn{2}{|c|}{"+e+"} & "
+			print(m, e)
+			modelname= str(i)+"_"+ names[i]
+			f="outputs/" + e +"/output/"+ modelname + 'log.csv'
+			if os.path.exists(f)==False:
+				data=data   + " ,   ,   "
+				continue
+			b_history=pd.read_csv(f, sep=";")		      
+			b_val_acc=round(max(b_history['val_acc']),2)
+			b_tr_acc=round(max(b_history['acc']),2)
+			
+			data=data   + " , " + str(b_tr_acc) + " , " +str(b_val_acc)  
+		data=data+ "\n"
+		i =i +1
+	fi=open("outputs/summary.csv","w")
+	
+	fi.write(header + "\n" + data)
+ 
+		
+		
+
+
 
 
 def getParameterdetails(logdir,outdir, cls):
@@ -66,17 +104,17 @@ def getParameterdetails(logdir,outdir, cls):
         m_tr_acc=round(max(m_history['acc']),2)
 
         #data=data + str(tr_acc) + " & " +str(val_acc) + " \\ \n"
-        model=m[i](weights=None, input_shape=input_shape,classes=classes)
+        #model=m[i](weights=None, input_shape=input_shape,classes=classes)
 
-        p=model.count_params()
-        p=str(round(p / 1000000,2)) + 'M'
+        #p=model.count_params()
+       # p=str(round(p / 1000000,2)) + 'M'
 
-        l=len(model.layers)
+        #l=len(model.layers)
         b_trtime=""
         m_trtime=""
 
         data=data +  names[i] + " & " + str(p) + " & " + str(l) + " & " + str(b_tr_acc) + " & " +str(b_val_acc) +  " & " +str(b_trtime)+ " & " + str(m_tr_acc) + " & " +str(m_val_acc) +  " & " +str(m_trtime) + "\\\ \\hline \n"
-    data=data+ tfooter
+    #data=data+ tfooter
     print(data )
     f=open(cls+"_summary.txt","w")
     f.write(data)
@@ -108,10 +146,12 @@ def draw(logdir,outdir, cls):
         history=pd.read_csv(logdir+ modelname+ 'log.csv', sep=";")
 
         #fig = plt.figure()
-        plt.subplot( 5,3, i+1)
+        plt.subplot( 4,3, i+1)
 
         acc,=plt.plot(history['acc'])
         val_acc,=plt.plot(history['val_acc'])
+        loss,=plt.plot(history['loss'])
+        val_loss,=plt.plot(history['val_loss'])
         plt.title(names[i])
         #plt.title(names[i]+' model accuracy')
         #plt.ylabel('accuracy')
@@ -136,26 +176,33 @@ def draw(logdir,outdir, cls):
 
         rec= names[i] +" &  \\includegraphics[width=0.4\\textwidth]{figures/"+cls+"/"+f1+"} &  \\includegraphics[width=0.4\\textwidth]{figures/"+cls+"/"+f2+"} \\\ \hline "
         tbody=tbody+ rec +"\n"
-    fig.legend([acc, val_acc],['train accuracy', 'validation accuracy'], loc='lower right')
+    fig.legend([acc, val_acc,loss,val_loss],['train accuracy', 'validation accuracy', 'traing loss','validation loss'], loc='lower right')
     plt.savefig(outdir+cls+"_total.png")
     latexcode.write(tbody)
     latexcode.write(tfooter)
  
-logdir="outputs/binary/output/"
-outdir="outputs/binary/drawing/"
-draw(logdir,outdir, "binary")
+#logdir="outputs/binary/output/"
+#outdir="outputs/binary/drawing/"
+#draw(logdir,outdir, "binary")
 
 
-logdir="outputs/binarydense/output/"
-outdir="outputs/binarydense/drawing/"
-draw(logdir,outdir,  "binarydense")
+#logdir="outputs/binarydense/output/"
+#outdir="outputs/binarydense/drawing/"
+#draw(logdir,outdir,  "binarydense")
 
 
 
-logdir="outputs/multi/output/"
-outdir="outputs/multi/drawing/"
-draw(logdir,outdir,  "multi")
+#logdir="outputs/multi/output/"
+#outdir="outputs/multi/drawing/"
+#draw(logdir,outdir,  "multi")
  
+expprefix=sys.argv[1]
+logdir="outputs/"+expprefix+"/output/"
+outdir="outputs/"+expprefix+"/drawing/"
+#draw(logdir,outdir,  expprefix)
+
+
+
 
 
 '''
@@ -167,3 +214,7 @@ getParameterdetails(logdir,outdir, "binary")
 #logdir="multi_output/"
 #outdir="multi_drawing/"
 #getParameterdetails(logdir,outdir, "multi")
+
+getParameterdetails(logdir,outdir, "multi")
+
+

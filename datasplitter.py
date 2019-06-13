@@ -3,32 +3,50 @@ import numpy as np
 import os
 import shutil
 from random import sample
-
-def copyfilesToFolder(fromFolder,  toFolder, fraction):
-
-    os.system("rm -rf " + toFolder )
+from sklearn.model_selection import train_test_split 
+def copyfilesToFolder(fromfolder,files,  toFolder):
+   # os.system("rm -rf " + toFolder )
     if not os.path.exists(toFolder):
         os.makedirs(toFolder)
+    for x in files:  
+        if (os.path.isfile(fromfolder+x)):
+            shutil.copy(fromfolder+x, toFolder)
 
-    files_names=   os.listdir(fromFolder)
-    files_names=sample(files_names, int(fraction * len(files_names)))
-
-    for x in files_names:
-        full_file_name = os.path.join(fromFolder, x)
-        if (os.path.isfile(full_file_name)):
-            shutil.move(full_file_name, toFolder)
-
-data_class=["H", "R","T","V"]
-for x in data_class:
-    fromFolder="hvttraindata/train/" + x
-    toFolder="hvttraindata/valid/" +x
-    fraction=0.2
-    files_names= os.listdir(fromFolder)
-    copyfilesToFolder(fromFolder,  toFolder, fraction)
+data_class=["sym", "nonsym"]
+ 
 
 
-    fromFolder="hvttraindata/train/" + x
-    toFolder="hvttraindata/test/" +x
-    fraction=0.2
-    files_names= os.listdir(fromFolder)
-    copyfilesToFolder(fromFolder,  toFolder, fraction)
+ 
+
+
+
+tr=8000
+tst=1000
+val=1000
+
+files_names=   os.listdir('dataset/esample2_sym/')
+testandval = 2000
+a, X_valid, y_train, y_valid = train_test_split(files_names, files_names, test_size=testandval, random_state=56741)
+testandval = 1000
+b, X_valid, y_train, c = train_test_split(X_valid,X_valid, test_size=testandval, random_state=56741)
+copyfilesToFolder('dataset/esample2_sym/',b,  'dataset/esample/valid/sym/')
+copyfilesToFolder( 'dataset/esample2_sym/',c,  'dataset/esample/test/')
+copyfilesToFolder('dataset/esample2_sym/',a,  'dataset/esample/train/sym/')
+
+
+
+
+tr=8000
+tst=1000
+val=1000
+
+files_names=   os.listdir('dataset/esample2_nonsym/')
+testandval = 2000
+a, X_valid, y_train, y_valid = train_test_split(files_names, files_names, test_size=testandval, random_state=56741)
+a=sample(a,tr)
+testandval = 1000
+b, X_valid, y_train, c = train_test_split(X_valid,X_valid, test_size=testandval, random_state=56741)
+copyfilesToFolder('dataset/esample2_nonsym/',b,  'dataset/esample/valid/nonsym/')
+copyfilesToFolder( 'dataset/esample2_nonsym/',c,  'dataset/esample/test/')
+copyfilesToFolder('dataset/esample2_nonsym/',a,  'dataset/esample/train/nonsym/')
+

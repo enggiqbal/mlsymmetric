@@ -14,8 +14,10 @@ import json
 
 
 #run python3 deploy.py num_class modelnumber checkpoint_dir test_img_dir out_csv
-#python3 deploy.py 2 8 outputs/binary/models/ testdataset/imagesWelsh/ testdataset/imagesWelsh/val.csv
+#python3 deploy.py 2 8 outputs/binary/models/ testdataset/imagesWelsh/ out.csv
 #python3 deploy.py 4 8 outputs/multi/models/ testdataset/wild/frominternet/ testdataset/wild/frominternet_multi.csv
+#binary
+#python3 deploy.py 2 8 outputs/binary/models/ dataset/esample/randomtest/  prediction.csv
 
 start=timer()
 
@@ -40,7 +42,19 @@ wild_path= sys.argv[4]
 outfile=sys.argv[5]
 
 
-calculatepercentage=0
+
+classes=2
+i=8
+checkpoint_dir="outputs/binary/models/"
+wild_path= "dataset/esample/randomtest/"
+outfile="prediction.csv"
+classes_name=["nonsym","sym"]
+validation_data_dir="dataset/esample/valid/"
+test_path=  "dataset/esample/test/"
+
+
+
+calculatepercentage=1
 input_shape=(200,200,1)
 img_width, img_height = 200, 200
 
@@ -50,8 +64,13 @@ V_batch_size=32
 
 if classes==2:
 	
-	target_names = ['nonsym', 'sym']
+#	target_names = ['nonsym', 'sym']
 	target_names = ['0', '1']
+#	target_names = ['H', 'V']
+
+#	target_names = ['nonsym', 'V']
+#	target_names = ['nonsym', 'H']
+
 else:
 	target_names = ['V', 'H', 'T', 'R']#[k for k in validation_generator.class_indices]
 
@@ -69,18 +88,28 @@ print(modelname)
 
 model=m[i](weights=None, input_shape=input_shape,classes=classes)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-model.load_weights(checkpoint_dir+modelname+'_checkpoint.best.hdf5')
+weigthfile=checkpoint_dir+modelname+'_checkpoint.best.hdf5'
+print("loading model",weigthfile)
+model.load_weights(weigthfile)
 wild_datagen = ImageDataGenerator(rescale = 1. / 255)
 '''
+
+
+validation_generator = wild_datagen.flow_from_directory(    validation_data_dir,   classes= classes_name, target_size =(img_width, img_height),          batch_size = V_batch_size,  class_mode='categorical',color_mode="grayscale")
+
 validation_generator = wild_datagen.flow_from_directory(
                                     validation_data_dir,
                    target_size =(img_width, img_height),
           batch_size = V_batch_size,  class_mode='categorical',color_mode="grayscale")
 
+
+test_datagen = ImageDataGenerator(rescale = 1. / 255)
+test_generator = test_datagen.flow_from_directory(    test_path,   classes= classes_name, target_size =(img_width, img_height),          batch_size = V_batch_size, shuffle=False, class_mode='categorical',color_mode="grayscale")
+
 '''
 wild_generator = wild_datagen.flow_from_directory(wild_path  ,
                               target_size =(img_width, img_height),
-                     batch_size = batch_size, classes=None, class_mode='categorical',color_mode="grayscale")
+                     batch_size = batch_size, classes=None, shuffle=False, class_mode='categorical',color_mode="grayscale")
 
 
 #model.fit_generator(train_generator, steps_per_epoch = nb_train_samples // batch_size, epochs = epochs, validation_data = validation_generator, validation_steps = nb_validation_samples // batch_size )
@@ -89,7 +118,7 @@ steps =  np.ceil(wild_generator.samples/batch_size)
 Y_pred = model.predict_generator(wild_generator, steps=steps)
 
 #steps =  np.ceil(wild_generator.samples/V_batch_size)
-#steps= wild_generator.samples
+#steps= wild_gener.samples
 #loss, acc = model.evaluate_generator(wild_generator, steps=steps, verbose=0)
 
 #print(loss, acc)
@@ -98,13 +127,18 @@ y_pred = np.argmax(Y_pred, axis=1)
 #print('Confusion Matrix')
 
 wildclass=[target_names[i] for  i in  y_pred]
-print(wildclass)
-print(wild_generator.filenames)
+#print(wildclass)
+#print(wild_generator.filenames)
 print(modelname)
+acclasses = test_generator.classes[test_generator.index_array]
+y_pred = np.argmax(Y_pred, axis=-1)
+print("percentage", sum(y_pred==acclasses)/2000)
 
-data=open(outfile,"a+")
+
+data=open(wild_path+ modelname +"_"+outfile,"w")
+data.write("filename_"+modelname+",predictedclass, " + target_names[0] + "-score," + target_names[1]+"-score\n")
 for i in range(0, len(y_pred)):
-	a=wild_generator.filenames[i] + ","+ wildclass[i]+ ","+ str( Y_pred[i][1]) + "\n"
+	a=wild_generator.filenames[i] + ","+ wildclass[i]+ ","+ str( Y_pred[i][0]) + ","+ str( Y_pred[i][1]) + "\n"
 	#print(a)
 	data.write(a)
 
@@ -121,6 +155,7 @@ def findpercentage(wildclass,o):
 
 if calculatepercentage==1:
 	o=[a.split("-")[1] for a in wild_generator.filenames]
+	#import pdb; pdb.set_trace()
 	print(" percentage", findpercentage(wildclass,o) )
 
 #oa=zip(wildclass,0)

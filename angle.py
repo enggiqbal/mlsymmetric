@@ -2,13 +2,13 @@ from keras.callbacks import EarlyStopping
 from keras.wrappers.scikit_learn import KerasRegressor
 from keras.preprocessing.image import ImageDataGenerator
 import keras.applications as  keras_applications
-from sklearn.cross_validation import train_test_split
+
 import keras
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Convolution2D
 from keras.optimizers import RMSprop, Adam, Adadelta
-
+from sklearn.model_selection import train_test_split
 def create_model():
     nb_filters = 8
     nb_conv = 5

@@ -11,12 +11,12 @@
 ### Set the queue for this job as windfall
 #PBS -q windfall
 ### Set the number of nodes, cores and memory that will be used for this job
-#PBS -l select=1:ncpus=1:mem=64gb:pcmem=6gb
+#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
 ### Specify "wallclock time" required for this job, hhh:mm:ss
-#PBS -l walltime=60:00:0
+#PBS -l walltime=10:00:0
 ### Specify total cpu time required for this job, hhh:mm:ss
 ### total cputime = walltime * ncpus
-#PBS -l cput=60:00:00
+#PBS -l cput=280:00:00
 ### Load required modules/libraries if needed (openmpi example)
 ### Use "module avail" command to list all available modules
 
