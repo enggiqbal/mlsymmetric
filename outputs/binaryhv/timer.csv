@@ -1,3 +1,9 @@
 1_MobileNet, 5.83
 3_NASNetMobile, 5.94
 2_MobileNetV2, 8.34
+0_ResNet50, 16.38
+8_InceptionResNetV2, 14.86
+7_Xception, 19.05
+9_DenseNet121, 19.26
+5_VGG16, 26.49
+10_DenseNet201, 28.16

@@ -1,0 +1,111 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 07:40:21.845695: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 07:40:21.876176: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300240000 Hz
+2019-06-11 07:40:21.877706: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bb4dc0 executing computations on platform Host. Devices:
+2019-06-11 07:40:21.877726: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-06-11 07:40:22.230123: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 07:40:22.395407: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 07:40:22.557522: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 07:40:22.801546: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 07:40:23.685571: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 08:55:35.929154: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 08:55:36.083844: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299930000 Hz
+2019-06-11 08:55:36.085317: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bb79a0 executing computations on platform Host. Devices:
+2019-06-11 08:55:36.085341: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-06-11 08:55:36.419703: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 08:55:36.575644: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 08:55:36.732508: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 08:55:36.987066: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 08:55:37.896079: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 09:29:28.559807: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 09:29:28.726957: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299965000 Hz
+2019-06-11 09:29:28.728369: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bb7870 executing computations on platform Host. Devices:
+2019-06-11 09:29:28.728394: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 09:38:59.256305: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 09:38:59.284643: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299925000 Hz
+2019-06-11 09:38:59.286079: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bb33d0 executing computations on platform Host. Devices:
+2019-06-11 09:38:59.286099: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-06-11 09:38:59.598647: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 09:38:59.760567: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 09:38:59.920907: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 09:39:00.178116: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+2019-06-11 09:39:01.062268: W tensorflow/core/framework/allocator.cc:124] Allocation of 301989888 exceeds 10% of system memory.
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 11:26:35.092029: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 11:26:35.142316: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299895000 Hz
+2019-06-11 11:26:35.143141: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bc14d0 executing computations on platform Host. Devices:
+2019-06-11 11:26:35.143156: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 20:37:24.259959: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 20:37:24.357316: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299920000 Hz
+2019-06-11 20:37:24.358685: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bb37f0 executing computations on platform Host. Devices:
+2019-06-11 20:37:24.358708: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-11 20:45:33.219250: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-11 20:45:33.270604: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2299920000 Hz
+2019-06-11 20:45:33.273064: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bbb370 executing computations on platform Host. Devices:
+2019-06-11 20:45:33.273099: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-12 00:59:55.728768: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-12 00:59:55.756910: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300170000 Hz
+2019-06-12 00:59:55.758287: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4bc0590 executing computations on platform Host. Devices:
+2019-06-12 00:59:55.758310: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>

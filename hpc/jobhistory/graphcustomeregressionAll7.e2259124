@@ -1,0 +1,14 @@
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (697) bind mounts
+Using TensorFlow backend.
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+angle_application2.py:161: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
+  model.fit(X, y, batch_size=batch_size, nb_epoch=epochs, verbose=1, validation_data=(X_valid, y_valid),  callbacks=[csv_logger,checkpoint] )
+WARNING:tensorflow:From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-06-08 22:48:00.785080: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-08 22:48:02.915273: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300030000 Hz
+2019-06-08 22:48:02.916416: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x4caaac0 executing computations on platform Host. Devices:
+2019-06-08 22:48:02.916445: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>

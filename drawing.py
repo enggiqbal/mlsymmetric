@@ -176,7 +176,7 @@ def draw(logdir,outdir, cls):
 
         rec= names[i] +" &  \\includegraphics[width=0.4\\textwidth]{figures/"+cls+"/"+f1+"} &  \\includegraphics[width=0.4\\textwidth]{figures/"+cls+"/"+f2+"} \\\ \hline "
         tbody=tbody+ rec +"\n"
-    fig.legend([acc, val_acc,loss,val_loss],['train accuracy', 'validation accuracy', 'traing loss','validation loss'], loc='lower right')
+    fig.legend([acc, val_acc,loss,val_loss],['training accuracy', 'validation accuracy', 'training loss','validation loss'], loc='lower right')
     plt.savefig(outdir+cls+"_total.png")
     latexcode.write(tbody)
     latexcode.write(tfooter)
@@ -199,7 +199,7 @@ def draw(logdir,outdir, cls):
 expprefix=sys.argv[1]
 logdir="outputs/"+expprefix+"/output/"
 outdir="outputs/"+expprefix+"/drawing/"
-#draw(logdir,outdir,  expprefix)
+draw(logdir,outdir,  expprefix)
 
 
 
@@ -215,6 +215,6 @@ getParameterdetails(logdir,outdir, "binary")
 #outdir="multi_drawing/"
 #getParameterdetails(logdir,outdir, "multi")
 
-getParameterdetails(logdir,outdir, "multi")
+#getParameterdetails(logdir,outdir, "multi")
 
 

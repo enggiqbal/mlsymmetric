@@ -23,6 +23,6 @@
 cd /extra/hossain/symmetric_graph_drawing/cnn
 # run the program
 
-singularity exec --nv /extra/hossain/gdocker.simg python3 multi_application2.py 2 2 > outputs/binaryvnonsym/st_out/output_2.txt
+singularity exec --nv /extra/hossain/gdocker.simg python3 multi_application.py 2 2 > outputs/binaryhnonsym/st_out/output_2.txt
 
 exit 0
