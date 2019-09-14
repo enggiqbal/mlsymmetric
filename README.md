@@ -29,7 +29,7 @@
 
 
 
-# models number 
+# supported models 
 ```console
 1 'ResNet50', 
 2 'MobileNet', 
@@ -52,14 +52,12 @@ $ python3 multi_application_train.py 1 binary esample nonsym,sym
 
 ```
 
-#prediction 
+# prediction 
  
 ```console
 $ python3 multi_deploy.py [modelNumber] [expname] [datasetname] [class_list_comma_sep] 
 $ python3 multi_deploy.py 8 multi hvttraindata H,R,T,V
 ```
-
-
 
 ## Team
 Iqbal Hossain, 
