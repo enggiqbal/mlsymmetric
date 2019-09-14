@@ -6,6 +6,13 @@ This source depends on  `keras`, `sklearn`,`pandas`, `numpy`,`matplotlib` python
 $ docker pull hossain/gdocker
 ```
 
+If you use singularity in high performance computing system (HPC) at the University of Arizona you can load and pull singularity image as follows:
+
+```shell
+$ module load singularity
+$ singularity pull --name gdocker.simg docker://hossain/gdocker
+```
+Note that if all of the required packages are installed in your local computer then you don't need docker and singularity. To know more about singularity please visit (https://singularity.lbl.gov/quickstart).
 # folder structure 
  
     .
