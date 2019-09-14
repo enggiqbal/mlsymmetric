@@ -69,3 +69,14 @@ Iqbal Hossain,
 Felice De Luca, and 
 Stephen Kobourov
 University of Arizona
+
+
+### citation 
+```
+@article{de2019symmetry,
+  title={Symmetry Detection and Classification in Drawings of Graphs},
+  author={De Luca, Felice and Hossain, Md Iqbal and Kobourov, Stephen},
+  journal={arXiv preprint arXiv:1907.01004},
+  year={2019}
+}
+```
