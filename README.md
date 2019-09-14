@@ -3,10 +3,10 @@
 This source depends on  `keras`, `sklearn`,`pandas`, `numpy`,`matplotlib` python packages. The following [docker] (https://www.docker.com/) image includes all the installation and environment. 
 
 ```console
-docker pull hossain/gdocker
+$ docker pull hossain/gdocker
 ```
 
-### folder structure 
+# folder structure 
  
     .
     ├── dataset
