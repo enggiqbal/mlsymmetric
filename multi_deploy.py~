@@ -19,28 +19,6 @@ from sklearn.metrics import confusion_matrix
 #binary
 #python3 deploy.py 2 8 outputs/binary/models/ dataset/esample/randomtest/  prediction.csv
 
-#python3 multi_deploy.py [modelNumber] [expname] [datasetname] [class_list_comma_sep]  
-
-#python3 multi_deploy.py 8 multi hvttraindata H,R,T,V
-rootoutput='outputs/'
-rootdataset='dataset/'
- 
-
-ModelNumber=int(sys.argv[1])-1
-#classes=int(sys.argv[2])
-expprefix=sys.argv[2]
-datasetname=sys.argv[3]
-classes_name=sys.argv[4].split(",")
-classes=len(classes_name)
-
-test_path=rootdataset + datasetname + "/test/"
-checkpoint_dir= rootoutput + expprefix+"/models/" # "outputs/multirefrottarAll/models/"
-
-print("test_path", test_path)
-print("checkpoint_dir", checkpoint_dir)
-print("classes",classes_name)
-
-
 start=timer()
 
 #classes=int(sys.argv[1])#2
@@ -64,7 +42,7 @@ wild_path= sys.argv[4]
 outfile=sys.argv[5]
 
 ''' 
-'''
+
 classes=3
 i=8
 
@@ -80,15 +58,12 @@ checkpoint_dir="outputs/multirefrottarAll/models/"
 
 
 classes=int(sys.argv[1]) #2
-modelNumber=int(sys.argv[2]) -1 #8
+i=int(sys.argv[2]) #8
 checkpoint_dir=sys.argv[3]
 test_path= sys.argv[4]
 outfile=sys.argv[5]
 
 
-#target_names =  ["ref","rot","tar"]
-#target_names =  ["H","R","T","V"]
-'''
 
 calculatepercentage=0
 input_shape=(200,200,1)
@@ -98,7 +73,9 @@ img_width, img_height = 200, 200
 V_batch_size=32
 
  
-#classes_name#=target_names
+target_names =  ["ref","rot","tar"]
+target_names =  ["H","R","T","V"]
+classes_name=target_names
 
 
 names=['ResNet50',   'MobileNet', 'MobileNetV2', 'NASNetMobile', 'NASNetLarge', 'VGG16', 'VGG19', 'Xception', 'InceptionResNetV2', 'DenseNet121', 'DenseNet201']
@@ -108,10 +85,10 @@ m=[keras_applications.ResNet50, keras_applications.MobileNet,  keras_application
 keras_applications.DenseNet121,keras_applications.DenseNet201]
 
 
-modelname= str(ModelNumber)+"_"+ names[ModelNumber]
+modelname= str(i)+"_"+ names[i]
 print(modelname)
 
-model=m[ModelNumber](weights=None, input_shape=input_shape,classes=classes)
+model=m[i](weights=None, input_shape=input_shape,classes=classes)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 weigthfile=checkpoint_dir+modelname+'_checkpoint.best.hdf5'
 print("loading model",weigthfile)

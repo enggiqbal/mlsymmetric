@@ -77,6 +77,16 @@ train_path = rootdataset+datapath+'/train'
 test_path = rootdataset+datapath+'/test'
 
 
+print("timerfile:", timerfile)
+print("outdir:", outdir)
+
+print("checkpoint_dir:", checkpoint_dir)
+
+print("validation_data_dir:", validation_data_dir)
+print("train_path:", train_path)
+print("test_path:", test_path)
+
+
 
 
 img_width, img_height = 200, 200

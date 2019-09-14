@@ -24,9 +24,11 @@ ModelNumber=int(sys.argv[1])-1
 
 #classes=int(sys.argv[2])
 expprefix=sys.argv[2]
-classes_name=sys.argv[2].split(",")
-classes=len(classes_name)
 datapath=sys.argv[3]
+classes_name=sys.argv[4].split(",")
+classes=len(classes_name)
+
+
 '''
 if classes ==2:
     expprefix="binary"
