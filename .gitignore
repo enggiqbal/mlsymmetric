@@ -1,5 +1,4 @@
-*.h5
-*.png
 *.hdf5
-*.DS_Store
-
+*/dataset/*
+*.jpg
+__MACOSX
