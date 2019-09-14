@@ -1,5 +1,10 @@
-# mlsymmetric
- 
+# Symmetry Detection and Classification in Drawings of Graphs
+
+This source depends on  `keras`, `sklearn`,`pandas`, `numpy`,`matplotlib` python packages. The following [docker] (https://www.docker.com/) image includes all the installation and environment. 
+
+```console
+docker pull hossain/gdocker
+```
 
 ### folder structure 
  
@@ -22,7 +27,7 @@
     .
     ├──outputs
     │    ├── expname 
-    │    │   ├──drawing                 # for chart/learning curive processing
+    │    │   ├──drawing                 # for chart/learning curve processing
     │    │   ├──models                  # for storing best train model
     │    │   ├──output                  # training log
     │    │   ├──st_out                  # standard console output
