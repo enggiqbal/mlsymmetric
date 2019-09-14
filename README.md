@@ -1,22 +1,35 @@
 # mlsymmetric
 
 #folder structure 
-dataset\
-	\datasetname
-		\train\class1
-		\train\class2
-		\valid\class1
-		\valid\class2
-		\test\class1
-		\test\class2
+── ...
+    ├── test                    # Test files (alternatively `spec` or `tests`)
+    │   ├── benchmarks          # Load and stress tests
+    │   ├── integration         # End-to-end, integration tests (alternatively `e2e`)
+    │   └── unit                # Unit tests
+    └── ...
+    
+dataset
+    ├── datasetname 
+    │   ├──train
+    │   │   ├──class1
+    │   │   ├──class2
+    		....
+    │   ├──valid    
+    │   │   ├──class1
+    │   │   ├──class2
+    		....
+    │   ├──test    
+    │   │   ├──class1
+    │   │   ├──class2
+    		....
 
-\outputs\
-	\expname
-		drawing/   
-		models/    
-		output/    
-		st_out/ 
-			
+outputs
+    ├── expname 
+    │   ├──drawing
+    │   ├──models
+    │   ├──output   
+    │   ├──st_out       
+
 
 
 # models number 
