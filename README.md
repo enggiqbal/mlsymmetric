@@ -24,7 +24,7 @@
     │    ├── expname 
     │    │   ├──drawing                 # for chart/learning curive processing
     │    │   ├──models                  # for storing best train model
-    │    │   ├──output                  # traing log
+    │    │   ├──output                  # training log
     │    │   ├──st_out                  # standard console output
 
 

@@ -149,7 +149,7 @@ print(confusion_matrix(acclasses,y_pred))
 
 
 
-import pdb; pdb.set_trace()
+
 np.savetxt('pred.csv',y_pred,delimiter=',')
 np.savetxt('acclasses.csv',acclasses,delimiter=',')
 #np.savetxt('fname.csv',test_generator.filenames,delimiter=',')
