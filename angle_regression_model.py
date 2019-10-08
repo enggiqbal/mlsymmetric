@@ -19,8 +19,9 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from sklearn.model_selection import train_test_split 
 
-from keras.models import Model
-from keras.layers import Input, Dense
+
+from keras.utils import plot_model
+
 
 def create_model():
     nb_filters = 8
@@ -31,19 +32,26 @@ def create_model():
                             border_mode='valid',
                             input_shape=( image_size, image_size,1) ) )
     model.add(Activation('relu'))
+
     model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
     model.add(Activation('relu'))
+
     model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
     model.add(Activation('relu'))
+
     model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
     model.add(Activation('relu'))
     model.add(Dropout(0.25))
+
     model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
     model.add(Activation('relu'))
+
     model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
     model.add(Activation('relu'))
+
     model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
     model.add(Activation('relu'))
+    
     model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
@@ -59,7 +67,7 @@ def create_model():
     model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
     return model
 
-i=int(sys.argv[1])-1
+
 
 start=timer()
 input_shape=(200,200,1)
@@ -71,7 +79,7 @@ input_shape=(200,200,1)
 rootoutput='outputs/'
 rootdataset='dataset/' 
 
-expprefix="customeregressionAll"
+expprefix="customeregression"
 datapath="rotationtraindata"
 #classes_name=["nonsym","H"]
 
@@ -114,25 +122,10 @@ def f1_m(y_true, y_pred):
     return 2*((precision*recall)/(precision+recall+K.epsilon()))
 
 
-
-names=['ResNet50',   'MobileNet', 'MobileNetV2', 'NASNetMobile', 'NASNetLarge', 'VGG16', 'VGG19', 'Xception', 'InceptionResNetV2', 'DenseNet121', 'DenseNet201']
-
-
-m=[keras_applications.ResNet50, keras_applications.MobileNet,  keras_applications.MobileNetV2, keras_applications.NASNetMobile, keras_applications.NASNetLarge, keras_applications.VGG16, keras_applications.VGG19, keras_applications.Xception, keras_applications.InceptionResNetV2,
-keras_applications.DenseNet121,keras_applications.DenseNet201]
-
-
  
 
-#modelname= names[i]# expprefix
-modelname= str(i)+"_"+ names[i]
-model=m[i](weights=None, input_shape=input_shape,include_top=False)
- 
-x = Flatten()(model.output)
-x = Dense(1, activation='linear')(x)
-
-model = Model(inputs=model.inputs, outputs=x)
-
+modelname= expprefix
+model=create_model()
 csv_logger = CSVLogger(outdir+ modelname+ 'log.csv', append=True, separator=';')
 
 checkpoint = ModelCheckpoint(checkpoint_dir+modelname+"_checkpoint.best.hdf5", monitor='val_mean_squared_error', verbose=1, save_best_only=True, mode='min')
@@ -140,10 +133,10 @@ checkpoint = ModelCheckpoint(checkpoint_dir+modelname+"_checkpoint.best.hdf5", m
 model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
  
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy',f1_m,precision_m, recall_m])
-#model.summary()
+model.summary()
 
- 
-
+plot_model(model, to_file='model.png')
+exit()
 
 train_datagen = ImageDataGenerator(rescale = 1. / 255)
 test_datagen = ImageDataGenerator(rescale = 1. / 255)
@@ -155,7 +148,7 @@ y=[int(f.split("-")[5].replace(".png",""))/90 for f in train_generator.filenames
 
 cv_size = 2000
 X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=cv_size, random_state=56741)
-
+print("X_train=",len(X_train))
 
 #validation_generator = test_datagen.flow_from_directory(    validation_data_dir,   classes= classes_name, target_size =(img_width, img_height),          batch_size = batch_size,  class_mode='categorical',color_mode="grayscale")
 model.fit(X, y, batch_size=batch_size, nb_epoch=epochs, verbose=1, validation_data=(X_valid, y_valid),  callbacks=[csv_logger,checkpoint] )
