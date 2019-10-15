@@ -1,0 +1,142 @@
+from keras.preprocessing.image import ImageDataGenerator
+import keras.applications as  keras_applications
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import classification_report, confusion_matrix
+import pandas as pd
+import sys
+from timeit import default_timer as timer
+from keras import backend as K
+from keras.callbacks import CSVLogger
+import json
+from keras.callbacks import ModelCheckpoint
+
+from keras.optimizers import RMSprop, Adam, Adadelta
+from keras.layers.convolutional import Convolution2D
+from keras.models import Sequential
+from keras.layers.core import Dense, Dropout, Activation, Flatten
+from sklearn.model_selection import train_test_split 
+
+
+from keras.utils import plot_model
+
+
+def create_model():
+    nb_filters = 8
+    nb_conv = 5
+    image_size=200
+    model = Sequential()
+    model.add(Convolution2D(nb_filters, nb_conv, nb_conv,
+                            border_mode='valid',
+                            input_shape=( image_size, image_size,1) ) )
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.25))
+    model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(nb_filters*2, nb_conv, nb_conv))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Flatten())
+    model.add(Dense(256))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(128))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(1))
+    model.add(Activation('linear'))
+    model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
+    return model
+
+
+
+start=timer()
+input_shape=(200,200,1)
+ 
+
+#i=int(sys.argv[1])-1
+#classes=int(sys.argv[2])
+
+rootoutput='outputs/'
+rootdataset='dataset/' 
+
+expprefix="customeregression"
+datapath="rotationtraindata"
+#classes_name=["nonsym","H"]
+
+
+ 
+timerfile= rootoutput+ expprefix+'/timer.csv'
+outdir=rootoutput + expprefix+"/output/"
+checkpoint_dir = rootoutput+ expprefix+ "/models/"
+validation_data_dir = rootdataset+ datapath+'/valid'
+train_path = rootdataset+datapath+'/'
+test_path = rootdataset+datapath+'_test/'
+
+modelname= expprefix
+weigthfile=checkpoint_dir+modelname+'_model_saved_weight.h5'
+weigthfile=checkpoint_dir+modelname+'_checkpoint.best.hdf5'
+
+
+
+img_width, img_height = 200, 200
+train_data_dir = train_path
+
+nb_train_samples = 12000#14000
+nb_validation_samples = 1600
+epochs = 20
+batch_size = 16
+ 
+ 
+model=create_model()
+
+#csv_logger = CSVLogger(outdir+ modelname+ 'log.csv', append=True, separator=';')
+
+#checkpoint = ModelCheckpoint(checkpoint_dir+modelname+"_checkpoint.best.hdf5", monitor='val_mean_squared_error', verbose=1, save_best_only=True, mode='min')
+
+model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
+ 
+model.load_weights(weigthfile)
+
+#model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy',f1_m,precision_m, recall_m])
+#model.summary()
+
+#plot_model(model, to_file='model.png')
+#exit()
+ 
+test_datagen = ImageDataGenerator(rescale = 1. / 255)
+test_generator = test_datagen.flow_from_directory(test_path,  classes= [""],   target_size =(img_width, img_height), batch_size = 10000, class_mode='sparse',color_mode="grayscale")
+X,_=test_generator.next()
+y=[int(f.split("-")[5].replace(".png",""))/90 for f in test_generator.filenames]
+
+cv_size = 2000
+ 
+ 
+steps =  np.ceil(test_generator.samples/batch_size)
+
+Y_pred = model.predict_generator(test_generator, steps=1)
+
+Y_90=Y_pred * 90 
+error=  np.array(y)*90 - Y_pred * 90 
+error=np.abs(error)
+e=error.mean()
+print("+/- error", e)
+result=np.array((test_generator.filenames,y,Y_pred.flatten())).T
+
+
+
+
+np.savetxt('pred_angle.csv',result,fmt='%s', delimiter=',')
+
