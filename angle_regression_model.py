@@ -135,8 +135,8 @@ model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_s
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy',f1_m,precision_m, recall_m])
 model.summary()
 
-plot_model(model, to_file='model.png')
-exit()
+#plot_model(model, to_file='model.png')
+#exit()
 
 train_datagen = ImageDataGenerator(rescale = 1. / 255)
 test_datagen = ImageDataGenerator(rescale = 1. / 255)

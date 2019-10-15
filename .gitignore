@@ -2,3 +2,5 @@
 */dataset/*
 *.jpg
 __MACOSX
+*.h5
+dataset/rotationtraindata/*
