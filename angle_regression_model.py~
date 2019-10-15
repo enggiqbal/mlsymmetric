@@ -18,7 +18,7 @@ from keras.layers.convolutional import Convolution2D
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from sklearn.model_selection import train_test_split 
-
+import os
 
 from keras.utils import plot_model
 

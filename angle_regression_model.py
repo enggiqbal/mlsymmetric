@@ -21,7 +21,7 @@ from sklearn.model_selection import train_test_split
 import os
 
 from keras.utils import plot_model
-
+from keras import optimizers
 
 def create_model():
     nb_filters = 8
@@ -64,7 +64,10 @@ def create_model():
     model.add(Dropout(0.5))
     model.add(Dense(1))
     model.add(Activation('linear'))
-    model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
+    sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+
+    #model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
+    model.compile(loss='mean_squared_error', optimizer=sgd,  metrics=['mean_squared_error'])
     return model
 
 
