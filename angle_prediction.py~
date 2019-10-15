@@ -85,11 +85,12 @@ validation_data_dir = rootdataset+ datapath+'/valid'
 train_path = rootdataset+datapath+'/'
 test_path = rootdataset+datapath+'_test/'
 
+
 modelname= expprefix
 weigthfile=checkpoint_dir+modelname+'_model_saved_weight.h5'
 weigthfile=checkpoint_dir+modelname+'_checkpoint.best.hdf5'
 
-
+normalizefactor=1 # or 90
 
 img_width, img_height = 200, 200
 train_data_dir = train_path
@@ -101,13 +102,7 @@ batch_size = 16
  
  
 model=create_model()
-
-#csv_logger = CSVLogger(outdir+ modelname+ 'log.csv', append=True, separator=';')
-
-#checkpoint = ModelCheckpoint(checkpoint_dir+modelname+"_checkpoint.best.hdf5", monitor='val_mean_squared_error', verbose=1, save_best_only=True, mode='min')
-
-model.compile(loss='mean_squared_error', optimizer=Adadelta(),  metrics=['mean_squared_error'])
- 
+  
 model.load_weights(weigthfile)
 
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy',f1_m,precision_m, recall_m])
@@ -119,7 +114,7 @@ model.load_weights(weigthfile)
 test_datagen = ImageDataGenerator(rescale = 1. / 255)
 test_generator = test_datagen.flow_from_directory(test_path,  classes= [""],   target_size =(img_width, img_height), batch_size = 10000, class_mode='sparse',color_mode="grayscale")
 X,_=test_generator.next()
-y=[int(f.split("-")[5].replace(".png",""))/90 for f in test_generator.filenames]
+y=[int(f.split("-")[5].replace(".png",""))/normalizefactor for f in test_generator.filenames]
 
 cv_size = 2000
  
@@ -128,11 +123,11 @@ steps =  np.ceil(test_generator.samples/batch_size)
 
 Y_pred = model.predict_generator(test_generator, steps=1)
 
-Y_90=Y_pred * 90 
-error=  np.array(y)*90 - Y_pred * 90 
+Y_90=Y_pred * normalizefactor 
+error=  np.array(y)*normalizefactor - Y_pred * normalizefactor 
 error=np.abs(error)
 e=error.mean()
-print("mean error", e)
+print("+/- error", e)
 result=np.array((test_generator.filenames,y,Y_pred.flatten())).T
 
 
