@@ -10,7 +10,7 @@ def slope(a,b):
 filename="{}-X-XX-1-0-{}.png"
 rootpath='../dataset/angledataset/'
 
-for i in range(0,10000):
+for i in range(0,100):
     a=np.random.randint(3,9) /10 
     b=np.random.randint(3,9) /10 
     ppoint=np.array([[0.1,0.1],[a,b]])
