@@ -143,7 +143,8 @@ file_names = np.array(test_generator.filenames)
 name_nums = np.zeros(file_names.size, dtype = [('names', 'U30'), ('y_pred', int), ('acclasses', int)])
 name_nums['names'] = file_names
 name_nums['y_pred'] = y_pred
+# Add Y_Pred
 name_nums['acclasses'] = acclasses
 
-np.savetxt('name_pred_acc.csv', name_nums, delimiter = ',', header = "File Name\t\tP. Class\tA. Class", fmt = "%s\t%i\t\t%i")
+np.savetxt('name_pred_acc.csv', name_nums, delimiter = ',', header = "File Name,P. Class,A. Class", fmt = "%s%i%i")
 print("name_pred_acc.csv has been created.")
