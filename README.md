@@ -69,6 +69,27 @@ $ python3 multi_application_train.py 1 binary esample nonsym,sym
 ```console
 $ python3 multi_deploy.py [modelNumber] [expname] [datasetname] [class_list_comma_sep] 
 $ python3 multi_deploy.py 8 multi hvttraindata H,R,T,V
+
+```
+```console
+$ python multi_deploy.py --help
+usage: multi_deploy.py [-h] [-ver] [-nocol] [-q | -v]
+                       MODEL_NUMBER EXP_NAME DATASET_NAME CLASSES
+
+mlsymmetric
+
+positional arguments:
+  MODEL_NUMBER       Model number
+  EXP_NAME           Name of experiment directory
+  DATASET_NAME       Dataset directory
+  CLASSES            List of classes
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -ver, --version    Display version information and dependencies.
+  -nocol, --nocolor  Disables color in terminal
+  -q, --quiet        Print quiet
+  -v, --verbose      Print verbose
 ```
 
 ## Team
